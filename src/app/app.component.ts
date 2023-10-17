@@ -41,16 +41,20 @@ export class AppComponent {
       icon: 'qr-code-outline',
       redirecTo: '/generar-qr'
     }
-   
+
 
   ]
-  metodo(){
-    if (localStorage.getItem("ingresado")){
-    return this.componentes.filter(c =>{
-      return !(c.name == "Registrate" || c.name == "Login")
-    })
-    
-    }else{
+  metodo() {
+    if (localStorage.getItem("ingresado")) {
+      return this.componentes.filter(c => {
+        return !(c.name == "Registrate" || c.name == "Login")
+      })
+
+    } if (localStorage.getItem("esDocente")) {
+      return this.componentes.filter(c => {
+        return !(c.name == "Registrate" || c.name == "Login" || c.name == "Generar QR")
+      })
+    } else {
       return this.componentes
     }
   }

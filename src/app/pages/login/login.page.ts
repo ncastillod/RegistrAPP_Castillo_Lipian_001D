@@ -59,11 +59,13 @@ export class LoginPage implements OnInit {
       if (encontrado.passUsuario == f.password) {
 
         localStorage.setItem('ingresado', 'true');
-        localStorage.setItem('nomUsuario', encontrado.nomUsuario)
+        localStorage.setItem('nomUsuario', encontrado.nomUsuario);
         this.mostrarMensajeExito();
         this.navController.navigateRoot('inicio');
 
-      } else {
+      }else if (encontrado.esDocente == true){
+        localStorage.setItem('esDocente', 'true')
+      }else {
         this.alertMsg();
       }
 
