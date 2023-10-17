@@ -3,14 +3,14 @@ import { AlertController } from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
 import { RegistroserviceService, Usuario } from '../../services/registroservice.service';
 import { ToastController } from '@ionic/angular';
-
+import { Router } from '@angular/router';
 import {
   FormGroup,
   FormControl,
   Validators,
   FormBuilder
 } from '@angular/forms';
-import { Router } from '@angular/router';
+
 
 
 function validatePasswordMatch(control: FormGroup) {

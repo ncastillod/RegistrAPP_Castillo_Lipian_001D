@@ -6,7 +6,7 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-       <ion-menu-toggle *ngFor="let c of componentes">
+       <ion-menu-toggle *ngFor="let c of metodo()">
           <ion-item [routerLink]="c. redirecTo" detail="true">
              <ion-icon slot="start" [name]="c.icon"></ion-icon>
              {{ c.name }}
@@ -17,7 +17,7 @@
     <ion-footer>
       <ion-toolbar>
         <ion-menu-toggle (click)="onClick()">
-          <ion-item routerLink="pages/inicio" detail="true">
+          <ion-item detail="true">
             <ion-icon slot="start" name="log-out-outline"></ion-icon>
             Cerrar Sesion
           </ion-item>
