@@ -73,7 +73,7 @@ export class LoginPage implements OnInit {
 
   async mostrarMensajeExito() {
     const alert = await this.alertController.create({
-      header: '¡Bienvenido ' + localStorage.getItem("nomUsuario") + '!',
+      header: '¡Bienvenid@ ' + localStorage.getItem("nomUsuario") + '!',
       message: '¡Ingreso exitoso!',
       buttons: ['Aceptar']
     });

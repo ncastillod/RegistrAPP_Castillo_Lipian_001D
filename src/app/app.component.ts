@@ -36,6 +36,11 @@ export class AppComponent {
       icon: 'attach-outline',
       redirecTo: '/registro'
     },
+    {
+      name: 'Generar QR',
+      icon: 'qr-code-outline',
+      redirecTo: '/generar-qr'
+    }
    
 
   ]

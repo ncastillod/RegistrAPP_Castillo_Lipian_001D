@@ -36,6 +36,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule),
     canActivate: [NoIngresadoGuard]
   },
+  {
+    path: 'generar-qr',
+    loadChildren: () => import('./pages/generar-qr/generar-qr.module').then( m => m.GenerarQRPageModule),
+    canActivate: [IngresadoGuard]
+  },
 ];
 
 @NgModule({
