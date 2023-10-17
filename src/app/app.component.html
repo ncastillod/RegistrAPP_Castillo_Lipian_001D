@@ -16,10 +16,10 @@
     </ion-content>
     <ion-footer>
       <ion-toolbar>
-        <ion-menu-toggle *ngFor="let c of [menuFooter]">
-          <ion-item [routerLink]="c.redirecTo" detail="true">
-            <ion-icon slot="start" [name]="c.icon"></ion-icon>
-            {{ c.name }}
+        <ion-menu-toggle (click)="onClick()">
+          <ion-item routerLink="pages/inicio" detail="true">
+            <ion-icon slot="start" name="log-out-outline"></ion-icon>
+            Cerrar Sesion
           </ion-item>
         </ion-menu-toggle>
       </ion-toolbar>

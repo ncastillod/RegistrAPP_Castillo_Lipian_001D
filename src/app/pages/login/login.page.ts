@@ -19,58 +19,78 @@ import {
 })
 export class LoginPage implements OnInit {
 
-  formularioLogin : FormGroup;
-  usuarios : Usuario[] = []; 
+  formularioLogin: FormGroup;
+  usuarios: Usuario[] = [];
 
-  constructor( private menuController: MenuController,
-               private alertController: AlertController, 
-               private navController: NavController, 
-               private registroService: RegistroserviceService,
-               private fb: FormBuilder) {
-                  this.formularioLogin = this.fb.group({ 
-                    'correo': new FormControl("", Validators.required),
-                    'password': new FormControl("", Validators.required),
-                  })
-                }
-              
+  constructor(private menuController: MenuController,
+    private alertController: AlertController,
+    private navController: NavController,
+    private registroService: RegistroserviceService,
+    private fb: FormBuilder) {
+    this.formularioLogin = this.fb.group({
+      'correo': new FormControl("", Validators.required),
+      'password': new FormControl("", Validators.required),
+    })
+  }
+
   ngOnInit() {
   }
-  mostrarMenu(){
+  mostrarMenu() {
     this.menuController.open('first');
-    }
+  }
 
   async Ingresar() {
     var f = this.formularioLogin.value;
-    var a = 0;
+    var correoExistente = false; // Inicialmente suponemos que el correo no existe
+
     this.registroService.getUsuarios().then(datos => {
-        this.usuarios = datos;
-        if (datos.length == 0) {
-            return;
-        }
+      this.usuarios = datos;
+      if (datos.length == 0) {
+        return;
+      }
 
-        for (let obj of this.usuarios) {
-            if (obj.correoUsuario == f.correo && obj.passUsuario == f.password) {
-                a = 1;
-                console.log('ingresado');
-                localStorage.setItem('ingresado', 'true');
-                this.navController.navigateRoot('inicio');
-            }
+      for (let obj of this.usuarios) {
+        if (obj.correoUsuario == f.correo && obj.passUsuario == f.password) {
+          correoExistente = true;
+          console.log('ingresado');
+          localStorage.setItem('ingresado', 'true');
+          localStorage.setItem('nomUsuario', obj.nomUsuario)
+          this.mostrarMensajeExito(); // Mostrar ventana emergente de éxito
+          this.navController.navigateRoot('inicio');
         }
-        console.log(a);
-        if (a == 0) {
-            this.alertMsg();
-        }
+      }
+
+      if (!correoExistente) {
+        this.mostrarMensajeError();
+      }
     });
+  }
 
-}
+  async mostrarMensajeExito() {
+    const alert = await this.alertController.create({
+      header: '¡Bienvenido ' + localStorage.getItem("nomUsuario") + '!',
+      message: '¡Ingreso exitoso!',
+      buttons: ['Aceptar']
+    });
+    await alert.present();
+  }
 
 
- async alertMsg(){
-  const alert = await this.alertController.create({
-    header: '¡Error!',
-    message:'Los datos ingresados no son correctos, por favor verifique sus credenciales',
-    buttons: ['Aceptar'],
-  });
+  async mostrarMensajeError() {
+    const alert = await this.alertController.create({
+      header: 'Error',
+      message: 'El correo ingresado no existe. Por favor, verifique sus credenciales.',
+      buttons: ['Aceptar']
+    });
+    await alert.present();
+  }
+
+  async alertMsg() {
+    const alert = await this.alertController.create({
+      header: '¡Error!',
+      message: 'Los datos ingresados no son correctos, por favor verifique sus credenciales',
+      buttons: ['Aceptar'],
+    });
     await alert.present();
     return;
   }

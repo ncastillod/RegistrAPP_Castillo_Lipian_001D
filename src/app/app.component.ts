@@ -39,12 +39,6 @@ export class AppComponent {
      
   ];
 
-  menuFooter = {
-    name: 'Cerrar Sesión',
-    icon: 'log-out-outline',
-    redirecTo: '/inicio',
-  };
-
 
   constructor() {}
 }
