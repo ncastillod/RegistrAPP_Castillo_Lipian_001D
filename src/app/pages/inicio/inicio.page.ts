@@ -40,4 +40,8 @@ export class InicioPage implements OnInit {
     const date = new Date(dateString);
     return date.getMonth() === currentMonth && date.getFullYear() === currentYear;
   }
+  escanearCodigoQR() {
+    // Lógica de escaneo de código QR (puede estar vacía para un marcador de posición).
+  }
+
 }

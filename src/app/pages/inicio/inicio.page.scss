@@ -44,3 +44,19 @@ ion-button {
     font-size: 14px;
   }
 }
+.centered-button {
+  margin-left: 25px; /* Margen izquierdo de 25px */
+  margin-right: 25px; /* Margen derecho de 25px */
+}
+.square-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; 
+  width: 100px;
+  margin: 0 auto; 
+  margin-top: 0px; 
+  background-color: yellow; 
+}
+
+
