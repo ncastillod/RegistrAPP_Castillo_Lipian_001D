@@ -67,8 +67,8 @@ export class LoginPage implements OnInit {
 
  async alertMsg(){
   const alert = await this.alertController.create({
-    header: 'Error..',
-    message:'!Los datos ingresados no son correctos',
+    header: '¡Error!',
+    message:'Los datos ingresados no son correctos, por favor verifique sus credenciales',
     buttons: ['Aceptar'],
   });
     await alert.present();
