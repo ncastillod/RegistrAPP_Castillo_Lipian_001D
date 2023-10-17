@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="icon-only" name="menu-outline" color="warning"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="logo-container">
+    <img src="./assets/icon/Logo_DuocUC.png" class="ion-padding" alt="">
+  </div>
+  
+  <br>
+  <br>
+  <br>
+  <br>
+  
+  <ion-list class="ion-padding">
+    <ion-item>
+      <ion-input labelPlacement="floating" placeholder="ejemplo@duocuc.cl">
+        <div slot="label">Usuario</div>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input labelPlacement="floating" placeholder="*******">
+        <div slot="label">Contraseña</div>
+      </ion-input>
+    </ion-item>
+    <ion-button expand="full">INGRESAR</ion-button>
+  </ion-list>
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div class="calendar">
+    <table>
+      <thead>
+        <tr>
+          <th>Día</th>
+          <th>Fecha</th>
+          <th>Título</th>
+          <th>Tipo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data.data">
+          <ng-container *ngIf="isCurrentMonthFeriado(item.date)">
+            <td>{{ getDayFromDate(item.date) }}</td>
+            <td>{{ item.date }}</td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.type }}</td>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ion-content>

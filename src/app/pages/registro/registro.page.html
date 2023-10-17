@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="icon-only" name="menu-outline" color="warning"></ion-icon>
+
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Registro</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="formularioRegistro" (ngSubmit)="CrearUsuario()">
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input type="text" formControlName="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Correo</ion-label>
+          <ion-input type="text" formControlName="correo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Confirma Password</ion-label>
+          <ion-input type="password" formControlName="confirmaPass"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label>¿Eres docente?</ion-label>
+          <ion-checkbox formControlName="esDocente"></ion-checkbox>
+        </ion-item>
+
+        <!-- Casillas de asignaturas-->
+
+        <div *ngIf="formularioRegistro.get('esDocente')?.value">
+          <ion-item>
+            <ion-label>Período Académico (Año)</ion-label>
+            <ion-input type="number" formControlName="periodoAcademico"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Semestre</ion-label>
+            <ion-select formControlName="semestre">
+              <ion-select-option value="1">1</ion-select-option>
+              <ion-select-option value="2">2</ion-select-option>
+            </ion-select>
+
+          </ion-item>
+          <ion-item>
+            <ion-label>Arquitectura 001-D</ion-label>
+            <ion-checkbox formControlName="asignatura1"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>Etica para el Trabajo 010-D</ion-label>
+            <ion-checkbox formControlName="asignatura2"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>Inglés Intermedio 003-D</ion-label>
+            <ion-checkbox formControlName="asignatura3"></ion-checkbox>
+          </ion-item>
+        </div>
+        <br>
+        <ion-button type="submit" expand="block" fill="outline" shape="round" routerLink="/login">
+          Registrarse
+        </ion-button>
+
+        <ion-button (click)="registrar()" expand="block" fill="clear" shape="round">
+          Click me
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
