@@ -75,7 +75,7 @@ export class RegistroPage implements OnInit {
       await alert.present();
     }else {
       this.CrearUsuario();
-      this.router.navigate(['inicio']);
+      this.router.navigate(['login']);
     }
   }
 

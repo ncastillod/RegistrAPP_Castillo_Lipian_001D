@@ -41,7 +41,7 @@ export class LoginPage implements OnInit {
 
   async Ingresar() {
     var f = this.formularioLogin.value;
-    var correoExistente = false; // Inicialmente suponemos que el correo no existe
+
 
     this.registroService.getUsuarios().then(datos => {
       this.usuarios = datos;
@@ -49,20 +49,25 @@ export class LoginPage implements OnInit {
         return;
       }
 
-      for (let obj of this.usuarios) {
-        if (obj.correoUsuario == f.correo && obj.passUsuario == f.password) {
-          correoExistente = true;
-          console.log('ingresado');
-          localStorage.setItem('ingresado', 'true');
-          localStorage.setItem('nomUsuario', obj.nomUsuario)
-          this.mostrarMensajeExito(); // Mostrar ventana emergente de éxito
-          this.navController.navigateRoot('inicio');
-        }
+      const encontrado = this.usuarios.find(usuario => usuario.correoUsuario == f.correo);
+
+      if (!encontrado) {
+        this.mostrarMensajeError();
+        return
       }
 
-      if (!correoExistente) {
-        this.mostrarMensajeError();
+      if (encontrado.passUsuario == f.password) {
+
+        localStorage.setItem('ingresado', 'true');
+        localStorage.setItem('nomUsuario', encontrado.nomUsuario)
+        this.mostrarMensajeExito();
+        this.navController.navigateRoot('inicio');
+
+      } else {
+        this.alertMsg();
       }
+
+
     });
   }
 
@@ -79,7 +84,7 @@ export class LoginPage implements OnInit {
   async mostrarMensajeError() {
     const alert = await this.alertController.create({
       header: 'Error',
-      message: 'El correo ingresado no existe. Por favor, verifique sus credenciales.',
+      message: 'El usuario no existe. Por favor, verifique sus credenciales.',
       buttons: ['Aceptar']
     });
     await alert.present();
