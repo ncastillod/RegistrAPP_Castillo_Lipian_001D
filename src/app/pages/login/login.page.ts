@@ -63,8 +63,12 @@ export class LoginPage implements OnInit {
         this.mostrarMensajeExito();
         this.navController.navigateRoot('inicio');
 
-      }else if (encontrado.esDocente == true){
+      }if (encontrado.esDocente == true){
         localStorage.setItem('esDocente', 'true')
+        
+      }else if (encontrado.esDocente == false){
+        localStorage.setItem('esDocente', 'false')      
+
       }else {
         this.alertMsg();
       }

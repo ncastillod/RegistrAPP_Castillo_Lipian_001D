@@ -1,12 +1,16 @@
-ion-button {
-  --background: #FFB800;
-  --color: white;
-  --box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
+.btn {
+
+    margin-left: 20px;
+
+    margin-right: 25px;
+    /* Margen derecho de 25px */
+
 }
 
 .calendar {
-  margin-left: 25px; /* Margen izquierdo de 25px */
-  margin-right: 25px; /* Margen derecho de 25px */
+  margin-left: 25px;
+  margin-right: 25px;
+
 
   table {
     width: 100%;
@@ -44,19 +48,21 @@ ion-button {
     font-size: 14px;
   }
 }
+
 .centered-button {
-  margin-left: 25px; /* Margen izquierdo de 25px */
-  margin-right: 25px; /* Margen derecho de 25px */
+  margin-left: 25px;
+  /* Margen izquierdo de 25px */
+  margin-right: 25px;
+  /* Margen derecho de 25px */
 }
+
 .square-button-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px; 
+  height: 100px;
   width: 100px;
-  margin: 0 auto; 
-  margin-top: 0px; 
-  background-color: yellow; 
+  margin: 0 auto;
+  margin-top: 0px;
+  background-color: yellow;
 }
-
-

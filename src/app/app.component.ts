@@ -45,19 +45,24 @@ export class AppComponent {
 
   ]
   metodo() {
-    if (localStorage.getItem("ingresado")) {
-      return this.componentes.filter(c => {
-        return !(c.name == "Registrate" || c.name == "Login")
-      })
-
-    } if (localStorage.getItem("esDocente")) {
+    if (localStorage.getItem("ingresado") && localStorage.getItem("esDocente") == 'false') {
       return this.componentes.filter(c => {
         return !(c.name == "Registrate" || c.name == "Login" || c.name == "Generar QR")
-      })
+      });
+    }if (localStorage.getItem("ingresado") && localStorage.getItem("esDocente")) {
+      return this.componentes.filter(c => {
+        return !(c.name == "Registrate" || c.name == "Login")
+      });
     } else {
-      return this.componentes
+      return this.componentes.filter(c => {
+        return !(c.name == "Generar QR")
+      });
     }
   }
+  
+
+  
+  
 
 
   constructor(
