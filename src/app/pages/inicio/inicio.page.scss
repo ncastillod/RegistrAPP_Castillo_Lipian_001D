@@ -1,10 +1,11 @@
 .btn {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
 
-    margin-left: 20px;
-
-    margin-right: 25px;
-    /* Margen derecho de 25px */
-
+  ion-button {
+    color: black;
+  }
 }
 
 .calendar {
