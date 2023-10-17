@@ -61,15 +61,18 @@ export class LoginPage implements OnInit {
         localStorage.setItem('ingresado', 'true');
         localStorage.setItem('nomUsuario', encontrado.nomUsuario);
         this.mostrarMensajeExito();
-        this.navController.navigateRoot('inicio');
+        
+        
 
       }if (encontrado.esDocente == true){
         localStorage.setItem('esDocente', 'true')
+        this.navController.navigateRoot('generar-qr');
         
-      }else if (encontrado.esDocente == false){
-        localStorage.setItem('esDocente', 'false')      
+      } if (encontrado.esDocente == false){
+        localStorage.setItem('esDocente', 'false')  
+        this.navController.navigateRoot('inicio');    
 
-      }else {
+      }if (encontrado.passUsuario != f.password){
         this.alertMsg();
       }
 
@@ -84,6 +87,8 @@ export class LoginPage implements OnInit {
       buttons: ['Aceptar']
     });
     await alert.present();
+    
+  
   }
 
 

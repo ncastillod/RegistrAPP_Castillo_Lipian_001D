@@ -27,7 +27,7 @@ export class AppComponent {
       redirecTo: '/card'
     },
     {
-      name: 'Login',
+      name: 'Iniciar Sesion',
       icon: 'person-outline',
       redirecTo: '/login'
     },
@@ -47,11 +47,11 @@ export class AppComponent {
   metodo() {
     if (localStorage.getItem("ingresado") && localStorage.getItem("esDocente") == 'false') {
       return this.componentes.filter(c => {
-        return !(c.name == "Registrate" || c.name == "Login" || c.name == "Generar QR")
+        return !(c.name == "Registrate" || c.name == "Iniciar Sesion" || c.name == "Generar QR")
       });
     }if (localStorage.getItem("ingresado") && localStorage.getItem("esDocente")) {
       return this.componentes.filter(c => {
-        return !(c.name == "Registrate" || c.name == "Login")
+        return !(c.name == "Registrate" || c.name == "Iniciar Sesion")
       });
     } else {
       return this.componentes.filter(c => {

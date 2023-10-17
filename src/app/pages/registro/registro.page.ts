@@ -113,7 +113,7 @@ export class RegistroPage implements OnInit {
     this.newUsuario.asignatura3 = form.asignatura3;
     this.registroService.addDatos(this.newUsuario).then(dato => {
       this.newUsuario = <Usuario>{};
-      this.showToast('!Datos Agregados');
+      this.showToast('Usuario Ingresado con exito');
     });
   }
 

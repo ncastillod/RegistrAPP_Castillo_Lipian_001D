@@ -14,10 +14,22 @@ export class InicioPage implements OnInit {
 
   ngOnInit() {
     this.llenarData();
+    this.alguien();
   }
 
   mostrarMenu() {
     this.menuController.open('first');
+  }
+
+  alguien(){
+    if (localStorage.getItem("ingresado")){
+      const divElement = document.querySelector('.btn') as HTMLElement;
+      divElement.style.display = 'block';
+    }else {
+      // Si la condición no se cumple, oculta el div
+      const divElement = document.querySelector('.btn') as HTMLElement;
+      divElement.style.display = 'none';
+    }
   }
 
   llenarData() {
@@ -43,5 +55,7 @@ export class InicioPage implements OnInit {
   escanearCodigoQR() {
     // Lógica de escaneo de código QR (puede estar vacía para un marcador de posición).
   }
+
+  
 
 }

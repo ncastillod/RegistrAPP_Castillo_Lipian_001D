@@ -1,3 +1,12 @@
+.btn {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+
+  ion-button {
+    color: black;
+  }
+}
 .ion-toolbar {
     background-color: black; /* Cambia 'blue' al color que desees */
     color: white; /* Cambia 'white' al color de texto que desees */
